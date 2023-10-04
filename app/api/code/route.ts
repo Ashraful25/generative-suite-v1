@@ -3,13 +3,10 @@ import { NextResponse } from "next/server";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
 
-const { Configuration, OpenAIApi } = require('openai');
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+import OpenAI from 'openai';
+const openai = new OpenAI({
+  apiKey: process.env["OPENAI_API_KEY"]
 });
-
-const openai = new OpenAIApi(configuration);
 
 const instructionMessage : ChatCompletionMessageParam = {
 
@@ -27,10 +24,6 @@ export async function POST(
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
-    }
-
-    if (!configuration.apiKey) {
-      return new NextResponse("OpenAI API Key not configured.", { status: 500 });
     }
 
     if (!messages) {
