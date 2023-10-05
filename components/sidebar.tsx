@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import {usePathname} from "next/navigation";
 import {LayoutDashboard,MessageSquare,ImageIcon, VideoIcon, Music, Code, PenBoxIcon} from "lucide-react"
 import { FreeCounter } from "./ui/freecounter";
+import React from "react";
 
 const montserrat = Montserrat (
     {
@@ -62,20 +63,16 @@ const routes = [
 ]
 
 interface SidebarProps {
-    apiLimitCount: 0 ;
+    apiLimitCount: number ;
+    onClose: () => void;   
 }
 
-const Sidebar = (
-    {
-        apiLimitCount = 0,
-      }: {
-        apiLimitCount: number;
-
-      }
-) => {
+const Sidebar: React.FC<SidebarProps> = ({ apiLimitCount, onClose }) => {
     const pathname = usePathname();
     return (
         <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
+            {/* Close button */}
+            
 
                 <div className="px-3 py-2 flex-1">
                     <Link href="/dashboard" className="flex items-center pl-3 mb-14">
