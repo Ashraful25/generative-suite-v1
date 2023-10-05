@@ -57,7 +57,7 @@ const DashboardPage = () => {
 
     return (
         <div>
-            <div className="mb-8 space-y-4 space-x-20">
+            <div className="mb-8 space-y-4 space-x-20 ">
                 <h2 className="px-20 text-2xl md:text-4xl font-bold text-left">
                     Welcome
                 </h2>
@@ -71,7 +71,7 @@ const DashboardPage = () => {
                         (tool) => (
                             <Card 
                             onClick={() => router.push(tool.herf)}
-                            style={{ width: '500px' }}
+                            style={{ width: '100%', maxWidth: '500px' }}
                             key={tool.herf}
                             className={cn("p-4 border-black/4 flex items-center justify-between transition cursor-pointer", "hover:shadow-lg")}
                             >
