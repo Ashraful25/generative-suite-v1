@@ -64,10 +64,9 @@ const routes = [
 
 interface SidebarProps {
     apiLimitCount: number ;
-    onClose: () => void;   
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ apiLimitCount, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ apiLimitCount}) => {
     const pathname = usePathname();
     return (
         <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
