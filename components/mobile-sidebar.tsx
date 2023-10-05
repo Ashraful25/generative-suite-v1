@@ -40,7 +40,7 @@ const MobileSidebar = ({
             <SheetContent side="left" className={`p-0 ${isSidebarOpen ? 'block' : 'hidden'}`} style={{ width: '90%', maxWidth: '100%' }}>
 
 
-                    <Sidebar apiLimitCount={apiLimitCount} onClose={toggleSidebar} />
+                    <Sidebar apiLimitCount={apiLimitCount}/>
                 
             </SheetContent>
         </Sheet>
