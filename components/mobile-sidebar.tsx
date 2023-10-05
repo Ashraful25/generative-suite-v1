@@ -7,13 +7,14 @@ import Sidebar from "./sidebar";
 import { useEffect, useState } from "react";
 
 interface MobileSidebarProps {
-    apiLimitCount: number;
+    apiLimitCount: number; 
 }
 
 const MobileSidebar = ({
     apiLimitCount
 }: MobileSidebarProps) => {
     const [isMounted, setMounted] = useState(false);
+    const [isSidebarOpen, setSidebarOpen] = useState(false); // Added state for sidebar visibility
 
     useEffect(
         () => {
@@ -25,24 +26,24 @@ const MobileSidebar = ({
         return null;
     }
 
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+    }
+
     return(
         <Sheet>
             <SheetTrigger>
-
-                <Button variant="ghost" size="icon" className="md:hidden">
-
+                <Button variant="outline" size="icon" className="md:hidden" onClick={toggleSidebar}>
                     <Menu/>
-
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-0">
-                <Sidebar apiLimitCount={apiLimitCount}/>
-            </SheetContent>
+            <SheetContent side="left" className={`p-0 ${isSidebarOpen ? 'block' : 'hidden'}`} style={{ width: '90%', maxWidth: '100%' }}>
 
-            
+
+                    <Sidebar apiLimitCount={apiLimitCount} onClose={toggleSidebar} />
+                
+            </SheetContent>
         </Sheet>
-        
-        
     );
 }
 
